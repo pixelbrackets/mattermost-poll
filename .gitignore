@@ -1,13 +1,7 @@
-### Folders
-.idea
-/vendor/
-.sass-cache
-node_modules
-/src/html/build
 
-### Files
-*.bat
-*.sublime-*
-npm-debug.log
-.env
-/composer.phar
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
