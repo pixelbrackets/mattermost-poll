@@ -80,6 +80,9 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.7.0"
     },
+    "symfony/process": {
+        "version": "v3.4.6"
+    },
     "symfony/routing": {
         "version": "3.3",
         "recipe": {
@@ -87,6 +90,15 @@
             "branch": "master",
             "version": "3.3",
             "ref": "a249484db698d1a847a30291c8f732414ac47e25"
+        }
+    },
+    "symfony/web-server-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
     },
     "symfony/yaml": {
