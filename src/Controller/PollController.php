@@ -140,10 +140,10 @@ class PollController extends Controller
         $logger->info('Voting');
         $logger->debug('Incoming button request', [$json]);
 
-        if (false === isset($json['channel_id'], $json['user_id'], $json['context']['answer'])) {
+        if (false === isset($json['user_id'], $json['context']['answer'])) {
             return $this->json([
-                'response_type' => 'ephemeral',
-                'text' => 'Missing required parameters'
+                // different reponse type for message button
+                'ephemeral_text' => 'Missing required parameters'
             ]);
         }
 
@@ -157,10 +157,10 @@ class PollController extends Controller
 
         if ($answer === NULL || $poll === NULL || $poll->getVisibility() === false) {
             return $this->json([
-                'response_type' => 'ephemeral',
-                'text' => 'Poll not valid (forged answer/poll ID, poll closed already)'
+                'ephemeral_text' => 'Poll not valid (forged answer/poll ID, poll closed already)'
             ]);
         }
+        $logger->info('Answer is valid', [$answer->getUid()]);
 
         $existingVote = $this->getDoctrine()
             ->getRepository(Vote::class)
@@ -173,8 +173,7 @@ class PollController extends Controller
 
         if (false === empty($existingVote)) {
             return $this->json([
-                'response_type' => 'ephemeral',
-                'text' => 'Already voted for this answer'
+                'ephemeral_text' => 'Already voted for this answer'
             ]);
         }
 
@@ -187,8 +186,7 @@ class PollController extends Controller
         // prepare view
         $text = 'Voting for poll »' . $poll->getTitle() . '« successful';
         return $this->json([
-            'response_type' => 'ephemeral',
-            'text' => $text
+            'ephemeral_text' => $text
         ]);
     }
 
@@ -205,10 +203,10 @@ class PollController extends Controller
         $logger->info('Close poll');
         $logger->debug('Incoming button request', [$json]);
 
-        if (false === isset($json['channel_id'], $json['user_id'], $json['context']['poll'])) {
+        if (false === isset($json['user_id'], $json['context']['poll'])) {
             return $this->json([
-                'response_type' => 'ephemeral',
-                'text' => 'Missing required parameters'
+                // different reponse type for message button
+                'ephemeral_text' => 'Missing required parameters'
             ]);
         }
 
@@ -218,8 +216,7 @@ class PollController extends Controller
 
         if ($poll === NULL || $poll->getVisibility() === false) {
             return $this->json([
-                'response_type' => 'ephemeral',
-                'text' => 'Poll not valid (forged poll ID, poll closed already)'
+                'ephemeral_text' => 'Poll not valid (forged poll ID, poll closed already)'
             ]);
         }
 
