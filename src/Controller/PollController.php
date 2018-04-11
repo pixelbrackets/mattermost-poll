@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Flex\Response;
+use Symfony\Component\HttpFoundation\Response as HtmlResponse;
 
 class PollController extends Controller
 {
@@ -18,17 +19,11 @@ class PollController extends Controller
      */
     public function index()
     {
-        return $this->json([
-            'meta' => [
-                'description' => 'Available endpoints in this app',
-                'resources' => [
-                    'poll' => $this->generateUrl('poll-new')
-                ]
-            ],
-            'links' => [
-                'self' => $this->generateUrl('root')
-            ]
-        ]);
+        $link = $this->generateUrl('poll-new', [], \Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_URL);
+
+        return new HtmlResponse(
+            '<h1>Poll 📊</h1>To add this service to your Mattermost instance you need to create a »Slash Command« using ' . $link .' as »Request URL«.'
+        );
     }
 
     /**
