@@ -43,14 +43,11 @@ class PollController extends Controller
             $json = $request->request->all();
         }
 
-        if (false === isset($json['channel_id'], $json['user_id'], $json['command'])) {
+        if (false === isset($json['channel_id'], $json['user_id'], $json['text'])) {
             return $this->json([
-                'errors' => [
-                    'status' => \Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST,
-                    'detail' => 'Missing required parameters'
-                ]],
-                \Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST
-            );
+                'response_type' => 'ephemeral',
+                'text' => 'Missing required parameters'
+            ]);
         }
 
         $text = 'Hello World';
