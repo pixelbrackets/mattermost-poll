@@ -65,8 +65,6 @@ class PollController extends Controller
         $poll->setModificationDate(new \DateTime());
         $poll->setVisibility(true);
 
-        $text = 'Poll »' . $pollCommand[0] . '« opened' . PHP_EOL;
-
         foreach ($pollCommand as $key => $pollCommandAnswer) {
             if ($key < 1) {
                 // skip poll slash command and title
@@ -77,54 +75,48 @@ class PollController extends Controller
             $entityManager->persist($answer);
 
             $poll->addAnswer($answer);
-
-            $text .= '  * ' . $pollCommandAnswer . PHP_EOL;
         }
 
         $entityManager->persist($poll);
         $entityManager->flush();
 
-        return $this->json([
+        // prepare view
+        $attachements = [];
+        $answers = $poll->getAnswers();
+        foreach ($answers as $answer) {
+            $attachements[] = [
+                'name' => $answer->getTitle(),
+                'integration' => [
+                    'url' => $this->generateUrl('poll-vote', [], \Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_URL),
+                    'context' => [
+                        'action' => 'vote',
+                        'answer' => $answer->getUid()
+                    ]
+                ]
+            ];
+        }
+        $attachements[] = [
+            'name' => 'Close Poll',
+            'integration' => [
+                'url' => $this->generateUrl('poll-close', [], \Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_URL),
+                'context' => [
+                    'action' => 'close',
+                    'poll' => $poll->getUid()
+                ]
+            ]
+        ];
+        $responseContent = [
             'response_type' => 'in_channel',
             'attachments' => [
                 [
-                    'pretext' => 'Poll',
-                    'text' => $text,
-                    'actions' => [
-                        [
-                            'name' => 'Answer 1',
-                            'integration' => [
-                                'url' => 'http://127.0.0.1:8000/vote',
-                                'context' => [
-                                    'action' => 'vote',
-                                    'answer' => '1'
-                                ]
-                            ]
-                        ],
-                        [
-                            'name' => 'Answer 2',
-                            'integration' => [
-                                'url' => 'http://127.0.0.1:8000/vote',
-                                'context' => [
-                                    'action' => 'vote',
-                                    'answer' => '2'
-                                ]
-                            ]
-                        ],
-                        [
-                            'name' => 'Close Poll',
-                            'integration' => [
-                                'url' => 'http://127.0.0.1:8000/close',
-                                'context' => [
-                                    'action' => 'close',
-                                    'poll' => '1'
-                                ]
-                            ]
-                        ]
-                    ]
+                    'pretext' => 'Poll »' . $poll->getTitle() . '« opened',
+                    'text' => $poll->getTitle(),
+                    'actions' => $attachements
                 ]
             ]
-        ]);
+        ];
+        $logger->debug('Outgoing reponse', [$responseContent]);
+        return $this->json($responseContent);
     }
 
     /**
