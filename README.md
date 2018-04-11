@@ -3,6 +3,15 @@ Poll
 
 Poll webhook for Mattermost.
 
+Requirements
+------------
+
+  * PHP
+  * MySQL
+
+The Mattermost instance calling this service has to be version 4.2 or greater
+(provide »Interactive Message Buttons« feature).
+
 Test
 ----
 
