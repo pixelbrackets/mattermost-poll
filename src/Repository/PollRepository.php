@@ -18,4 +18,17 @@ class PollRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Poll::class);
     }
+
+    public function findOneByIdJoinedToAnswer($answerUid)
+    {
+        return $this->createQueryBuilder('p')
+            // p.answer refers to the "answer" property on poll
+            ->innerJoin('p.answers', 'a')
+            // selects all the answer data to avoid the query
+            ->addSelect('a')
+            ->andWhere('a.uid = :uid')
+            ->setParameter('uid', $answerUid)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
