@@ -36,6 +36,13 @@ class PollController extends Controller
     {
         $requestContent = $request->getContent() ?: [];
         $json = json_decode($requestContent, true);
+        if ($request->getContentType() === 'form') {
+            // Fix because mattermost sends slash commands as
+            // »application/x-www-form-urlencoded« instead of application/json
+            // Issue: https://github.com/mattermost/mattermost-server/issues/1649
+            $json = $request->request->all();
+        }
+
         if (false === isset($json['channel_id'], $json['user_id'], $json['command'])) {
             return $this->json([
                 'errors' => [
