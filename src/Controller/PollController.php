@@ -85,8 +85,45 @@ class PollController extends Controller
         $entityManager->flush();
 
         return $this->json([
-            'response_type' => 'ephemeral',
-            'text' => $text,
+            'response_type' => 'in_channel',
+            'attachments' => [
+                [
+                    'pretext' => 'Poll',
+                    'text' => $text,
+                    'actions' => [
+                        [
+                            'name' => 'Answer 1',
+                            'integration' => [
+                                'url' => 'http://127.0.0.1:8000/vote',
+                                'context' => [
+                                    'action' => 'vote',
+                                    'answer' => '1'
+                                ]
+                            ]
+                        ],
+                        [
+                            'name' => 'Answer 2',
+                            'integration' => [
+                                'url' => 'http://127.0.0.1:8000/vote',
+                                'context' => [
+                                    'action' => 'vote',
+                                    'answer' => '2'
+                                ]
+                            ]
+                        ],
+                        [
+                            'name' => 'Close Poll',
+                            'integration' => [
+                                'url' => 'http://127.0.0.1:8000/close',
+                                'context' => [
+                                    'action' => 'close',
+                                    'poll' => '1'
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
         ]);
     }
 
