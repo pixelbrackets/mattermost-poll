@@ -136,12 +136,6 @@ class PollController extends Controller
     {
         $requestContent = $request->getContent() ?: [];
         $json = json_decode($requestContent, true);
-        if ($request->getContentType() === 'form') {
-            // Fix because mattermost sends slash commands as
-            // »application/x-www-form-urlencoded« instead of application/json
-            // Issue: https://github.com/mattermost/mattermost-server/issues/1649
-            $json = $request->request->all();
-        }
 
         $logger->info('Voting');
         $logger->debug('Incoming button request', [$json]);
@@ -207,12 +201,6 @@ class PollController extends Controller
     {
         $requestContent = $request->getContent() ?: [];
         $json = json_decode($requestContent, true);
-        if ($request->getContentType() === 'form') {
-            // Fix because mattermost sends slash commands as
-            // »application/x-www-form-urlencoded« instead of application/json
-            // Issue: https://github.com/mattermost/mattermost-server/issues/1649
-            $json = $request->request->all();
-        }
 
         $logger->info('Close poll');
         $logger->debug('Incoming button request', [$json]);
