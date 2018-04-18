@@ -22,7 +22,7 @@ The Mattermost instance calling this service has to be version 4.2 or greater
 Installation
 ------------
 
-1. Clone project to desired webserver
+1. Clone project to desired directory
 1. Run `composer install`
 1. Edit `.env` file
 1. Initialize database
@@ -30,6 +30,10 @@ Installation
    ./bin/console doctrine:database:create
    ./bin/console doctrine:migrations:migrate
    ```
+1. Configure webserver to serve `web` directory
+   - Development / Test: Run `php bin/console server:start 127.0.0.1:8000`
+   - Production: [Configure webserver for Symfony Apps](https://symfony.com/doc/current/setup/web_server_configuration.html)
+     and [export `.env` file](https://stackoverflow.com/questions/19331497/set-environment-variables-from-file/20909045#20909045)
 1. Open homepage to see the »Request URL« needed for »Slash Commands«
 
 Integration
