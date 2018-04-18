@@ -1,6 +1,6 @@
 {
+    "license": "GPL-2.0-or-later",
     "type": "project",
-    "license": "proprietary",
     "require": {
         "php": "^7.0.8",
         "ext-iconv": "*",
