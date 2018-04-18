@@ -1,7 +1,10 @@
 Poll
 ====
 
-Poll webhook for Mattermost.
+Poll Slash Command for Mattermost.
+
+[![Packagist](https://img.shields.io/packagist/v/pixelbrackets/mattermost-poll.svg)](https://packagist.org/packages/pixelbrackets/mattermost-poll/)
+[![Mattermost Integration](https://img.shields.io/badge/mattermost-slash_command-blue.svg)](https://about.mattermost.com/community-applications/)
 
 Requirements
 ------------
@@ -31,21 +34,29 @@ Integration
 1. Add new »Slash Command« in each Teamspace in Mattermost
 1. Use the »Request URL« shown on the homepage of the service
 
-Test
-----
+Source
+------
 
-1. See installation guide
-1. Run `php bin/console server:start 127.0.0.1:8000`
-1. Open http://localhost:8000 in a browser
-1. Send curl request to create a poll
-   ```bash
-   curl -H "Content-Type: application/json" -X POST -d '{"channel_id":"niah6qa", "user_id":"c3a4cqe3", "token":"jsn93w", command":"/poll", "text":"supper soup salad \"taco and burito\" burger"}' http://localhost:8000/new
-   ```
-1. Send curl request to vote for an answer
-   ```bash
-   curl -H "Content-Type: application/json" -X POST -d '{"user_id":"c3a4cqe3", "context": {"action":"vote", "token":"jytdd", "answer":"2"}}' http://localhost:8000/vote
-   ```
-1. Send curl request to end a poll
-   ```bash
-   curl -H "Content-Type: application/json" -X POST -d '{"user_id":"c3a4cqe3", "context": {"action":"close", "token":"jytdd", "poll":"1"}}' http://localhost:8000/close
-   ```
+https://gitlab.com/pixelbrackets/mattermost-poll/
+
+License
+-------
+
+GNU General Public License version 2 or later
+
+The GNU General Public License can be found at http://www.gnu.org/copyleft/gpl.html.
+
+Author
+------
+
+Dan Untenzu (<mail@pixelbrackets.de> / [@pixelbrackets](https://github.com/pixelbrackets))
+
+Changelog
+---------
+
+[./Changelog.md](./Changelog.md)
+
+Contribution
+------------
+
+This script is Open Source, so please use, patch, extend or fork it.

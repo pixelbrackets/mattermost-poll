@@ -1,6 +1,6 @@
 {
     "name": "pixelbrackets/mattermost-poll",
-    "description": "Poll webhook for Mattermost.",
+    "description": "Poll Slash Command for Mattermost.",
     "homepage": "https://gitlab.com/pixelbrackets/mattermost-poll/",
     "license": "GPL-2.0-or-later",
     "type": "project",
