@@ -6,6 +6,10 @@ Poll Slash Command for Mattermost.
 [![Packagist](https://img.shields.io/packagist/v/pixelbrackets/mattermost-poll.svg)](https://packagist.org/packages/pixelbrackets/mattermost-poll/)
 [![Mattermost Integration](https://img.shields.io/badge/mattermost-slash_command-blue.svg)](https://about.mattermost.com/community-applications/)
 
+`/poll supper soup salad "taco and burito" burger`
+
+![Screenshot](./docs/images/poll.png)
+
 Requirements
 ------------
 
