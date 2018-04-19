@@ -12,13 +12,13 @@
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^3.4",
         "symfony/lts": "^3",
+        "symfony/monolog-bundle": "^3.2",
         "symfony/orm-pack": "^1.0",
         "symfony/yaml": "^3.4"
     },
     "require-dev": {
         "symfony/dotenv": "^3.4",
         "symfony/maker-bundle": "^1.2",
-        "symfony/monolog-bundle": "^3.2",
         "symfony/web-server-bundle": "^3.4"
     },
     "config": {
