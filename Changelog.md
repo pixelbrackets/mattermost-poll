@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2018-07-16 Dan Untenzu <mail@pixelbrackets.de>
+
+  * 2.1.0
+  * FEATURE Allow only creator to close a poll (works only for new polls)
+
 2018-04-19 Dan Untenzu <mail@pixelbrackets.de>
 
   * 2.0.0
