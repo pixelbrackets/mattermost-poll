@@ -27,6 +27,13 @@ class Poll
     private $creationDate;
 
     /**
+     * User who started the poll
+     *
+     * @ORM\Column(type="string", length=64)
+     */
+    private $creator;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $modificationDate;
@@ -88,6 +95,22 @@ class Poll
     public function setCreationDate()
     {
         $this->creationDate = new \DateTime();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param string $creator
+     */
+    public function setCreator($creator)
+    {
+        $this->creator = $creator;
     }
 
     /**

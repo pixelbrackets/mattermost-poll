@@ -57,6 +57,7 @@ class PollController extends Controller
         $poll = new Poll();
         $poll->setTitle($pollCommand[0]);
         $poll->setCreationDate();
+        $poll->setCreator($json['user_id']);
         $poll->setModificationDate(new \DateTime());
         $poll->setVisibility(true);
 
@@ -172,6 +173,8 @@ class PollController extends Controller
 
         // prepare view
         $text = 'Voting for poll »' . $poll->getTitle() . '« successful';
+
+        // show success message for user only
         return $this->json([
             'ephemeral_text' => $text
         ]);
@@ -207,6 +210,12 @@ class PollController extends Controller
             ]);
         }
 
+        if ($poll->getCreator() !== $json['user_id']) {
+            return $this->json([
+                'ephemeral_text' => 'Only the initial creator is allowed to close the poll'
+            ]);
+        }
+
         $logger->debug('Existing Poll', [$poll]);
 
         // prepare view
@@ -228,6 +237,7 @@ class PollController extends Controller
         $entityManager->persist($poll);
         $entityManager->flush();
 
+        // replace original message with results
         return $this->json([
             'update' => [
                 'message' => $text
