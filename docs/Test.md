@@ -6,7 +6,7 @@ Test
 1. Open http://localhost:8000 in a browser
 1. Send curl request to create a poll
    ```bash
-   curl -H "Content-Type: application/json" -X POST -d '{"channel_id":"niah6qa", "user_id":"c3a4cqe3", "token":"jsn93w", command":"/poll", "text":"supper soup salad \"taco and burito\" burger"}' http://localhost:8000/new
+   curl -H "Content-Type: application/json" -X POST -d '{"channel_id":"niah6qa", "user_id":"c3a4cqe3", "token":"jsn93w", "command":"/poll", "text":"supper soup salad \"taco and burito\" burger"}' http://localhost:8000/new
    ```
 1. Send curl request to vote for an answer
    ```bash
