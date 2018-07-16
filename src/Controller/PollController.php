@@ -210,7 +210,8 @@ class PollController extends Controller
             ]);
         }
 
-        if ($poll->getCreator() !== $json['user_id']) {
+        // backwards compatibility - check for empty value may be removed in next mayor release (breaking change)
+        if ($poll->getCreator() !== '' && $poll->getCreator() !== $json['user_id']) {
             return $this->json([
                 'ephemeral_text' => 'Only the initial creator is allowed to close the poll'
             ]);
