@@ -1,5 +1,11 @@
 # Changelog
 
+2020-05-02 Dan Untenzu <mail@pixelbrackets.de>
+
+  * 2.2.0
+  * FEATURE Update dependencies
+  * FEATURE Add CI
+
 2018-07-16 Dan Untenzu <mail@pixelbrackets.de>
 
   * 2.1.0
