@@ -1,5 +1,4 @@
-Poll
-====
+# Mattermost Poll
 
 Poll Slash Command for Mattermost.
 
@@ -10,17 +9,15 @@ Poll Slash Command for Mattermost.
 
 ![Screenshot](./docs/images/poll.png)
 
-Requirements
-------------
+## Requirements
 
-  * PHP
-  * MySQL
+- PHP
+- MySQL
 
 The Mattermost instance calling this service has to be version 4.2 or greater
 (provide »Interactive Message Buttons« feature).
 
-Installation
-------------
+## Installation
 
 1. Clone project to desired directory
 1. Run `composer install`
@@ -36,35 +33,40 @@ Installation
      and [export `.env` file](https://stackoverflow.com/questions/19331497/set-environment-variables-from-file/20909045#20909045)
 1. Open homepage to see the »Request URL« needed for »Slash Commands«
 
-Integration
------------
+## Integration
 
 1. Add new »Slash Command« in each Teamspace in Mattermost
 1. Use the »Request URL« shown on the homepage of the service
 
-Source
-------
+## Usage
+
+- Type the slash command, followed by the poll title, followed by all options
+- Separete the title and each option with spaces
+- use quotes to include spaces in a string
+
+Create a poll with a title and four options
+```
+/poll supper soup salad "taco and burito" burger
+```
+
+## Source
 
 https://gitlab.com/pixelbrackets/mattermost-poll/
 
-License
--------
+## License
 
 GNU General Public License version 2 or later
 
 The GNU General Public License can be found at http://www.gnu.org/copyleft/gpl.html.
 
-Author
-------
+## Author
 
 Dan Untenzu (<mail@pixelbrackets.de> / [@pixelbrackets](https://github.com/pixelbrackets))
 
-Changelog
----------
+## Changelog
 
-[./Changelog.md](./Changelog.md)
+[./CHANGELOG.md](./CHANGELOG.md)
 
-Contribution
-------------
+## Contribution
 
 This script is Open Source, so please use, patch, extend or fork it.
