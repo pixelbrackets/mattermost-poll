@@ -65,11 +65,17 @@
     "monolog/monolog": {
         "version": "1.23.0"
     },
+    "nikic/php-parser": {
+        "version": "v4.4.0"
+    },
     "ocramius/package-versions": {
         "version": "1.2.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.0.4"
+    },
+    "php": {
+        "version": "7.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -184,6 +190,9 @@
     },
     "symfony/polyfill-apcu": {
         "version": "v1.7.0"
+    },
+    "symfony/polyfill-ctype": {
+        "version": "v1.15.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.7.0"
