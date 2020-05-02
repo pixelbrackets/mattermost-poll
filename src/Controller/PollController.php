@@ -143,7 +143,7 @@ class PollController extends Controller
             ->getRepository(Poll::class)
             ->findOneByIdJoinedToAnswer((int)$json['context']['answer']);
 
-        if ($answer === NULL || $poll === NULL || $poll->getVisibility() === false) {
+        if ($answer === null || $poll === null || $poll->getVisibility() === false) {
             return $this->json([
                 'ephemeral_text' => 'Poll not valid (forged answer/poll ID, poll closed already)'
             ]);
@@ -204,7 +204,7 @@ class PollController extends Controller
             ->getRepository(Poll::class)
             ->findOneBy(['uid' => (int)$json['context']['poll']]);
 
-        if ($poll === NULL || $poll->getVisibility() === false) {
+        if ($poll === null || $poll->getVisibility() === false) {
             return $this->json([
                 'ephemeral_text' => 'Poll not valid (forged poll ID, poll closed already)'
             ]);
