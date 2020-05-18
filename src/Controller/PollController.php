@@ -52,6 +52,19 @@ class PollController extends Controller
             ]);
         }
 
+        if ($json['text'] == 'help') {
+            return $this->json([
+                'response_type' => 'ephemeral',
+                'text' => '- Type the slash command, followed by the poll title, followed by all answers' . PHP_EOL
+                    . '- Separete the title and each answer with spaces' . PHP_EOL
+                    . '- use quotes to include spaces in a string' . PHP_EOL
+                    . '' . PHP_EOL
+                    . 'Create a poll with a title and four options' . PHP_EOL
+                    . '`/poll supper soup salad "taco and burito" burger`'
+            ]);
+        }
+
+        // Persist poll
         $pollCommand = str_getcsv($json['text'], ' ');
 
         $poll = new Poll();

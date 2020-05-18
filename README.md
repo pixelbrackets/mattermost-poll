@@ -40,11 +40,11 @@ The Mattermost instance calling this service has to be version 4.2 or greater
 
 ## Usage
 
-- Type the slash command, followed by the poll title, followed by all options
-- Separete the title and each option with spaces
+- Type the slash command, followed by the poll title, followed by all answers
+- Separete the title and each answer with spaces
 - use quotes to include spaces in a string
 
-Create a poll with a title and four options
+Create a poll with a title and four answers
 ```
 /poll supper soup salad "taco and burito" burger
 ```

@@ -15,3 +15,7 @@
    ```bash
    http POST http://localhost:8000/close < close.json
    ```
+1. Send request to show a help message
+   ```bash
+   http POST http://localhost:8000/new < new-help.json
+   ```
