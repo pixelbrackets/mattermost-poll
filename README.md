@@ -1,13 +1,16 @@
 # Mattermost Poll
 
-Poll Slash Command for Mattermost.
+[![Version](https://img.shields.io/packagist/v/pixelbrackets/mattermost-poll.svg?style=flat-square)](https://packagist.org/packages/pixelbrackets/mattermost-poll/)
+[![Build Status](https://img.shields.io/gitlab/pipeline/pixelbrackets/mattermost-poll?style=flat-square)](https://gitlab.com/pixelbrackets/mattermost-poll/pipelines)
+[![Made With](https://img.shields.io/badge/made_with-php-blue?style=flat-square)](https://gitlab.com/pixelbrackets/mattermost-poll#requirements)
+[![License](https://img.shields.io/badge/license-gpl--2.0--or--later-blue.svg?style=flat-square)](https://spdx.org/licenses/GPL-2.0-or-later.html)
+[![Mattermost Integration](https://img.shields.io/badge/mattermost-slash_command-blue.svg?style=flat-square)](https://about.mattermost.com/community-applications/)
 
-[![Packagist](https://img.shields.io/packagist/v/pixelbrackets/mattermost-poll.svg)](https://packagist.org/packages/pixelbrackets/mattermost-poll/)
-[![Mattermost Integration](https://img.shields.io/badge/mattermost-slash_command-blue.svg)](https://about.mattermost.com/community-applications/)
+Poll Slash Command for Mattermost.
 
 `/poll supper soup salad "taco and burito" burger`
 
-![Screenshot](./docs/images/poll.png)
+![Screenshot](./docs/screenshot.png)
 
 ## Requirements
 
@@ -33,10 +36,20 @@ The Mattermost instance calling this service has to be version 4.2 or greater
      and [export `.env` file](https://stackoverflow.com/questions/19331497/set-environment-variables-from-file/20909045#20909045)
 1. Open homepage to see the »Request URL« needed for »Slash Commands«
 
-## Integration
+### Integration into Mattermost
 
 1. Add new »Slash Command« in each Teamspace in Mattermost
 1. Use the »Request URL« shown on the homepage of the service
+
+## Source
+
+https://gitlab.com/pixelbrackets/mattermost-poll/
+
+Mirror https://github.com/pixelbrackets/mattermost-poll/
+
+## Demo
+
+🚀 https://mattermost-poll.app.pixelbrackets.de/
 
 ## Usage
 
@@ -48,10 +61,6 @@ Create a poll with a title and four answers
 ```
 /poll supper soup salad "taco and burito" burger
 ```
-
-## Source
-
-https://gitlab.com/pixelbrackets/mattermost-poll/
 
 ## License
 
